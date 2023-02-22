@@ -15,6 +15,7 @@ This League of Legends Competitive Matches 2022 dataset had a lot of missing dat
 Let’s take a look at Veigar’s kill statistics in all of the competitive matches that he appeared in. It seems like Veigar averaged consistently around 4 kills. This is above the average for all legends in the dataset (which is around 3). This isn’t to say that Veigar is inherently a stronger champion to get kills with, but more so, that it is more of an attacking based character. It does show though, that Veigar can hold his own as an attacking character, at least amongst the pros.
 
 ### Bivariate Analysis:
+<iframe src="assets/goldspent_to_visionscore_plot.html" width=800 height=600 frameBorder=0></iframe>
 Let’s look at some other statistics regarding Veigar – namely, the correlation between gold spent and vision score. It seems that with the more gold spent on items in the shop, the higher the vision score. 
 
 ### Interesting Aggregates:
@@ -30,8 +31,10 @@ In my cleaned dataset for League of Legends 2022 Competitive Matches, I don’t 
 Because of all these reasons, I don’t believe that any column in the dataset is NMAR.
 
 ### Missingness Dependency:
+<iframe src="assets/empirical_distribution_doublekills_kills.html" width=800 height=600 frameBorder=0></iframe>
 One column that I chose to analyze further on its missingness is “doublekills”. I ran a permutation test on the distribution of “kills” when “doublekills” was and was not missing. My test statistic for this was the absolute difference of means. I shuffled the “doublekills” column repeatedly for 500 repetitions, and grouped by missingness. I proceeded to calculate the test statistic for each of these repetitions. I computed the test statistic on the original cleaned data frame as well. After running the test and plotting the results, it shows that there is definitely a correlation between the  missingness of “doublekills” and “kills” itself. The observed is way beyond what was seen in the 500 repetitions, so it was likely not due to random chance alone. 
 
+<iframe src="assets/empirical_distribution_doublekills_earnedgold.html" width=800 height=600 frameBorder=0></iframe>
 I also ran a permutation test on the distribution of “earnedgold” when “doublekills” was and not missing. My test statistic was also the absolute difference of means. And similarly, I shuffled the “doublekills” column repeatedly for 500 repetitions, and grouped by missingness. After running the permutation test and plotting the result, it shows that there is probably no correlation between the missingness of “doublekills” and “earnedgold” itself. What was found in the observed is right in line with the test statistics when we shuffled the missingness of “doublekills”. This is seen from how the red line (observed) is in the middle of the histogram plotted.
 
 So what does this tell us about our initial question -- is Veigar (my favorite champion from the 5 games I've played) more likely to win or lose any given match? It means that if we are doing any statistical analysis regarding the “doublekills” column, to be careful. The NaN values aren’t necessarily missing completely at random (as seen through the permutation test), and therefore, may need more accurate imputations. 
@@ -39,11 +42,11 @@ So what does this tell us about our initial question -- is Veigar (my favorite c
 
 
 ## Hypothesis Testing:
-
+<iframe src="assets/hypothesis_test_num_veigar_wins.html" width=800 height=600 frameBorder=0></iframe>
 As a reminder, the question that I am seeking to answer is – is Veigar (my favorite champion from the 5 games I've played) more likely to win or lose any given match)? To answer this, I will conduct a hypothesis test with a significance level cutoff of 0.05. My hypotheses are as follows:
 - Null Hypothesis: There is a fair chance for Veigar to win or lose any given match, and that any difference is attributed to random chance.
 - Alternative Hypothesis: There is not a fair chance for Veigar to win or lose any given match. 
 
-I will run 100,000 iterations, where for each iteration, I will calculate the test statistic of how many wins there are out of 508 appearances (the number of Veigar appearances in the dataframe). This number of wins will be calculated assuming the null is true – that there is a 50-50 chance of winning or losing. 
+I will run 100,000 iterations, where for each iteration, I will calculate the test statistic of how many wins there are out of 508 appearances (the number of Veigar appearances in the dataframe). This number of wins will be calculated assuming the null is true – that there is a 50-50 chance of winning or losing.
 
 The p-value for this hypothesis test was 0.03, which is below the significance level of 0.05. This means that we reject the null, and that the difference we see in our observed statistic is not due to random chance, and that there is not a fair chance for Veigar to win or lose any given match.
