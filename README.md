@@ -20,6 +20,7 @@ This League of Legends Competitive Matches 2022 dataset had a lot of missing dat
 
 
 Since my analysis had mostly to do with games that Veigar appeared in, I filtered out a new dataframe accordingly. The first few rows of this dataset with a few chosen columns can also be seen here:
+
 | gameid                | datacompleteness   | url     | playoffs   |   kills |   deaths |   assists |
 |:----------------------|:-------------------|:--------|:-----------|--------:|---------:|----------:|
 | NA1_4173680959        | complete           | unknown | False      |       4 |        1 |        14 |
@@ -37,6 +38,7 @@ Let’s take a look at Veigar’s kill statistics in all of the competitive matc
 Let’s look at some other statistics regarding Veigar – namely, the correlation between gold spent and vision score. It seems that with the more gold spent on items in the shop, the higher the vision score. 
 
 ### Interesting Aggregates:
+
 | result (won?)   |   kills |   deaths |   assists |   damagetochampions |
 |:----------------|--------:|---------:|----------:|--------------------:|
 | False           | 2.66182 |  3.77091 |   3.2     |             13310.1 |
