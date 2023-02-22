@@ -1,1 +1,1 @@
-# leagueoflegendsEDA
+# League of Legends Exploratory Data Analysis
