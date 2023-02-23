@@ -19,7 +19,7 @@ This League of Legends Competitive Matches 2022 dataset had a lot of missing dat
 | ESPORTSTMNT01_2690210 | complete           | unknown | False      |       1 |        5 |         6 |
 
 
-Since my analysis had mostly to do with games that Veigar appeared in, I filtered out a new dataframe accordingly. The first few rows of this dataset with a few chosen columns can also be seen here:
+Since my analysis had mostly to do with games that Veigar appeared in, I filtered out a new dataframe including only rows that Veigar was chosen as the champion. The first few rows of this dataset with a few chosen columns can also be seen here:
 
 | gameid                | datacompleteness   | url     | playoffs   |   kills |   deaths |   assists |
 |:----------------------|:-------------------|:--------|:-----------|--------:|---------:|----------:|
@@ -28,6 +28,7 @@ Since my analysis had mostly to do with games that Veigar appeared in, I filtere
 | ESPORTSTMNT01_2701158 | complete           | unknown | False      |       8 |        1 |         8 |
 | ESPORTSTMNT04_2090500 | complete           | unknown | False      |       4 |        0 |         4 |
 | ESPORTSTMNT04_2140153 | complete           | unknown | False      |       6 |        1 |         8 |
+
 
 ### Univariate Analysis:
 <iframe src="assets/veigar_kills_plot.html" width=800 height=600 frameBorder=0></iframe>
@@ -43,6 +44,7 @@ Let’s look at some other statistics regarding Veigar – namely, the correlati
 |:----------------|--------:|---------:|----------:|--------------------:|
 | False           | 2.66182 |  3.77091 |   3.2     |             13310.1 |
 | True            | 5.71245 |  1.71245 |   7.32189 |             17151.8 |
+
 
 Amongst the games that Veigar has played in, let’s compare the average kills, deaths, assists, and damage to champions in won and lost games. It seems like Veigar makes a huge difference statistics-wise on games that they have won or lost. On average, there are 3 more kills, 2 less deaths, and 4 more assists in games where Veigar has won.
 
@@ -74,4 +76,4 @@ As a reminder, the question that I am seeking to answer is – is Veigar (my fav
 
 I will run 100,000 iterations, where for each iteration, I will calculate the test statistic of how many wins there are out of 508 appearances (the number of Veigar appearances in the dataframe). This number of wins will be calculated assuming the null is true – that there is a 50-50 chance of winning or losing.
 
-The p-value for this hypothesis test was 0.03, which is below the significance level of 0.05. This means that we reject the null, and that the difference we see in our observed statistic is not due to random chance, and that there is not a fair chance for Veigar to win or lose any given match.
+The p-value for this hypothesis test was 0.03, which is below the significance level of 0.05. This means that we reject the null, and that the difference we see in our observed statistic is not due to random chance, and that there is not a fair chance for Veigar to win or lose any given match. In competitive matches at least, it seems that the odds are stacked against Veigar players as they are more likely to lose than to win. 
